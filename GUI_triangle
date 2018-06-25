@@ -1,0 +1,60 @@
+package GUI;
+import java.awt.*;
+import java.awt.event.*;
+public class GUIone extends Frame implements ActionListener {
+	private Button x =new Button("计算");
+	private Button y =new Button("重新输入");
+	private TextField Ainput =new TextField(20);
+	private TextField Binput =new TextField(20);
+	private TextField Cinput=new TextField(20);
+	private TextField output= new TextField(20);
+	private Label A =new Label("输入A");
+	private Label B =new Label("输入B");
+	private Label C =new Label("输入C");
+	private Label D =new Label("三角形的周长");
+	private class WindowCloser extends WindowAdapter{
+		public void windowClosing(WindowEvent e) {
+			System.exit(0);
+		}
+	}
+	public void setup() {
+		Panel buttons =new Panel();
+		buttons.setLayout(new FlowLayout());
+		buttons.add(x);
+		buttons.add(y);
+		Panel text=new Panel();
+		text.setLayout(new GridLayout(4,2));
+		text.add(A);text.add(Ainput);text.add(B);text.add(Binput);
+		text.add(C);text.add(Cinput);text.add(D);text.add(output);
+		setLayout(new BorderLayout());
+		add("North",text);
+		add("South",buttons);
+	}
+	public GUIone() {
+		super("三角形问题");
+		setup();
+		x.addActionListener(this);
+		y.addActionListener(this);
+		addWindowListener(new WindowCloser());
+		pack(); 
+		setVisible(true);
+	}
+	
+	public static void main(String[] args) {
+		GUIone m =new GUIone();
+	}
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource()==x) {
+			double a = Double.parseDouble(Ainput.getText());
+			double b =Double.parseDouble(Binput.getText());
+			double c =Double.parseDouble(Cinput.getText());
+			output.setText(String.valueOf(a+b+c));//将其转化成字符串
+		}
+		else if(e.getSource()==y) {
+			Ainput.setText("");
+			Binput.setText("");
+			Cinput.setText("");
+			output.setText("");
+		}
+	}
+}

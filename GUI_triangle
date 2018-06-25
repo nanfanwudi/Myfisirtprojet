@@ -1,7 +1,7 @@
 package GUI;
 import java.awt.*;
 import java.awt.event.*;
-public class GUIone extends Frame implements ActionListener {
+public class GUIone extends Frame implements ActionListener {//整体来说这个就是利用一个小的界面，来计算三角形的周长
 	private Button x =new Button("计算");
 	private Button y =new Button("重新输入");
 	private TextField Ainput =new TextField(20);
